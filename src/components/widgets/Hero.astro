@@ -1,6 +1,7 @@
 ---
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
+import profilePic from '~/assets/images/jpimage.jpg';
 
 import type { Hero as Props } from '~/types';
 
@@ -11,7 +12,6 @@ const {
 
   content = await Astro.slots.render('content'),
   actions = await Astro.slots.render('actions'),
-  image = await Astro.slots.render('image'),
 
   id,
   bg = await Astro.slots.render('bg'),
@@ -39,7 +39,7 @@ const {
         {
           title && (
             <h1
-              class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
+              class="text-5xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
               set:html={title}
             />
           )
@@ -74,25 +74,16 @@ const {
       <div
         class="intersect-once intercept-no-queue intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade"
       >
-        {
-          image && (
-            <div class="relative m-auto max-w-5xl">
-              {typeof image === 'string' ? (
-                <Fragment set:html={image} />
-              ) : (
-                <Image
-                  class="mx-auto rounded-md w-full"
-                  widths={[400, 768, 1024, 2040]}
-                  sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
-                  loading="eager"
-                  width={1024}
-                  height={576}
-                  {...image}
-                />
-              )}
-            </div>
-          )
-        }
+        <Image
+          class="mx-auto rounded-md w-full flex justify-center"
+          widths={[400, 768, 1024, 2040]}
+          sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+          loading="eager"
+          width={768}
+          height={576}
+          src={profilePic}
+          alt="J. Plichta"
+        />
       </div>
     </div>
   </div>
