@@ -9,8 +9,7 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
+    default: JP Insurance
   description: "Découvrez le cabinet JP Insurance et ses services d'assurance."
   robots:
     index: true
