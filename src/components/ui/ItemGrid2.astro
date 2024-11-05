@@ -18,11 +18,11 @@ const {
 {
   items && (
     <a href={'/'} target={'_self'} class="group" class:list-reset>
-      <div class={twMerge(`flex justify-center w-auto`, containerClass)}>
+      <div class={twMerge(`flex flex-wrap justify-center gap-6`, containerClass)}>
         {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }) => (
           <div
             class={twMerge(
-              'relative justify-center items-stretch flex flex-col intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade',
+              'relative flex flex-col items-center justify-between  rounded-lg shadow-lg w-full sm:w-[200px] h-full',
               panelClass,
               itemClasses?.panel
             )}
@@ -30,15 +30,15 @@ const {
             {(icon || defaultIcon) && (
               <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
             )}
-            <div class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</div>
+            <div class={twMerge('text-xl font-bold text-center', titleClass, itemClasses?.title)}>{title}</div>
             {description && (
               <p
-                class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)}
+                class={twMerge('text-muted mt-2 text-center', descriptionClass, itemClasses?.description)}
                 set:html={description}
               />
             )}
             {callToAction && (
-              <div class="mt-2">
+              <div class="mt-2 w-full flex justify-center">
                 <Button {...callToAction} />
               </div>
             )}
